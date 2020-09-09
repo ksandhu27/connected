@@ -1,10 +1,7 @@
 package com.test.mc;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContextException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.BindException;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +31,5 @@ public class ConnectedService {
         Map<String, String> destinationToOriginMap = helper.destinationToOriginMap(originToDestinationMap);
         Map<String, List<String>> originToAllPossibleDestinationsMap = helper.findAllPossibleDestinations(originToDestinationMap, destinationToOriginMap);
         return helper.isConnected(origin, destination, originToAllPossibleDestinationsMap);
-        //return originToDestinationMap + "<br>" + destinationToOriginMap + "<br>" + originToAllPossibleDestinationsMap.toString();
-       //return "hello " + origin + " -- " + destination;
     }
 }
