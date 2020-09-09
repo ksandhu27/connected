@@ -14,6 +14,15 @@ import java.util.Map;
 @Component
 public class ConnectedService {
     private ConnectedHelper helper = ConnectedHelper.getInstance();
+
+    /***
+     * Primary service method determining if the origin and destnation are connected
+     * @param origin
+     * @param destination
+     * @return
+     * @throws ApiError
+     * @throws IOException
+     */
     public String determineConnectivity(String origin, String destination) throws ApiError, IOException {
         if (origin.isEmpty()) {
             throw new ApiError(HttpStatus.BAD_REQUEST, "origin must not be empty");

@@ -22,6 +22,11 @@ public class ConnectedHelper {
         return instance;
     }
 
+    /***
+     * This method reads the input city.txt file and creates an origin to destination map
+     * @return
+     * @throws IOException
+     */
     public Map<String, String> readConnections() throws IOException {
         Map<String, String> map = new HashMap<>();
         ClassLoader classLoader = ConnectedHelper.class.getClassLoader();
@@ -40,11 +45,22 @@ public class ConnectedHelper {
 
     }
 
+    /***
+     * This method creates a destination to origin map
+     * @param originToDestinationMap
+     * @return
+     */
     public Map<String, String> destinationToOriginMap(Map<String, String> originToDestinationMap) {
     return originToDestinationMap.entrySet()
             .stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
     }
 
+    /***
+     * this method establishes the relationahip between all possible origins and destinations
+     * @param originToDestinationMap
+     * @param destinationToOriginMap
+     * @return
+     */
     public Map<String, List<String>> findAllPossibleDestinations(Map<String, String> originToDestinationMap,
                                                                  Map<String, String> destinationToOriginMap) {
         Map<String, List<String>> combinedMap = new HashMap<>();
@@ -57,6 +73,14 @@ public class ConnectedHelper {
         }
         return combinedMap;
     }
+
+    /***
+     * this method determines is the origin and destination are connected
+     * @param origin
+     * @param destination
+     * @param originToAllPossibleDestinationsMap
+     * @return
+     */
 
     public String isConnected(String origin, String destination, Map<String,
             List<String>> originToAllPossibleDestinationsMap) {
